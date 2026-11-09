@@ -1,0 +1,246 @@
+.hero-carousel {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.hero-carousel__wrapper {
+  position: relative;
+  width: 100%;
+  height: 560px;
+}
+
+.hero-carousel__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1000ms ease-in-out;
+}
+
+.hero-carousel__slide--active {
+  opacity: 1;
+}
+
+.hero-carousel__blur-bg {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  transform: scale(1.1);
+  object-fit: cover;
+  filter: blur(24px);
+}
+
+.hero-carousel__image {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.hero-carousel__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(6, 27, 13, 0.8),
+    rgba(6, 27, 13, 0.45),
+    rgba(0, 0, 0, 0.1)
+  );
+}
+
+.hero-carousel__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.hero-carousel__text {
+  max-width: 48rem;
+  color: white;
+}
+
+.hero-carousel__label {
+  margin-bottom: 1.25rem;
+  width: fit-content;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  backdrop-filter: blur(12px);
+}
+
+.hero-carousel__title {
+  max-width: 56rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: white;
+}
+
+.hero-carousel__description {
+  margin-top: 1.5rem;
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  color: rgba(226, 232, 240, 0.95);
+}
+
+.hero-carousel__dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 1.5rem;
+  z-index: 20;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.hero-carousel__dot {
+  height: 0.625rem;
+  width: 0.625rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.45);
+  transition: all 300ms ease;
+}
+
+.hero-carousel__dot:hover,
+.hero-carousel__dot:focus-visible {
+  background: rgba(255, 255, 255, 0.8);
+  outline: none;
+}
+
+.hero-carousel__dot--active {
+  width: 2.25rem;
+  background: white;
+}
+
+.hero-image-motion {
+  animation: heroImageMotion 18s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.hero-soft-motion {
+  animation: softFloat 5.5s ease-in-out infinite;
+}
+
+.typewriter-text--typing::after {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 0.9em;
+  margin-left: 6px;
+  background: rgba(255, 255, 255, 0.75);
+  animation: blinkCursor 0.75s step-end infinite;
+  vertical-align: -0.08em;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+@keyframes heroImageMotion {
+  0% {
+    transform: scale(1) translateX(0);
+  }
+
+  100% {
+    transform: scale(1.06) translateX(-12px);
+  }
+}
+
+@keyframes softFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes blinkCursor {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 640px) {
+  .hero-carousel__wrapper {
+    height: 650px;
+  }
+
+  .hero-carousel__content {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .hero-carousel__title {
+    font-size: 3rem;
+  }
+
+  .hero-carousel__description {
+    font-size: 1.125rem;
+  }
+
+  .hero-carousel__dots {
+    left: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-carousel__wrapper {
+    height: calc(100vh - 96px);
+  }
+
+  .hero-carousel__content {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .hero-carousel__title {
+    font-size: 3.75rem;
+  }
+
+  .hero-carousel__dots {
+    left: 5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-carousel__title {
+    font-size: 4.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-motion,
+  .hero-soft-motion,
+  .typewriter-text--typing::after {
+    animation: none;
+  }
+
+  .hero-carousel__slide {
+    transition: none;
+  }
+}
